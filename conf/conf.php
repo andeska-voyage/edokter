@@ -2,10 +2,10 @@
     // Set timezone ke WIB (Indonesia)
     date_default_timezone_set('Asia/Jakarta');
 
-    $db_hostname            = "192.168.0.2"; 
-    $db_username            = "sik_apr2026";
-    $db_password            = "ZKJmsX8cEEm23rcw"; 
-    $db_name                = "sik_apr2026";
+    $db_hostname            = "localhost"; 
+    $db_username            = "sik";
+    $db_password            = "xxx"; 
+    $db_name                = "sik";
 
     define('APP_BASE_URL', '/edokter/');
     define('PHOTO_BASE_URL', 'http://192.168.0.2:4000/webapps2026/penggajian/');
