@@ -1,0 +1,191 @@
+MIT License with Attribution Clause
+====================================
+
+Copyright (c) 2026 Alfian Nur Ihsan
+
+Modul e-Dokter untuk SIMRS Khanza
+Berjalan di atas SIMRS Khanza karya Windiarto Nugroho
+
+------------------------------------------------------------
+ENGLISH VERSION
+------------------------------------------------------------
+
+Permission is hereby granted, free of charge, to any person obtaining a
+copy of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the
+Software is furnished to do so, subject to the following conditions:
+
+1. ATTRIBUTION REQUIREMENT (MANDATORY)
+
+   The above copyright notice, this permission notice, and any developer
+   attribution displayed within the Software (including but not limited to
+   the "Tentang Aplikasi" / "About" page, application footer, splash
+   screen, and source code comments) MUST be retained in all copies,
+   substantial portions, and derivative works of the Software.
+
+   Specifically, the following attributions MUST NOT be removed, hidden,
+   altered, or replaced:
+
+   a. Name of the e-Dokter developer: "Alfian Nur Ihsan"
+   b. Name of the SIMRS Khanza developer: "Windiarto Nugroho"
+   c. Any visible watermark, credit line, or "Powered by" notice that
+      identifies the original authors.
+
+2. NO MISREPRESENTATION
+
+   You MUST NOT misrepresent the origin of this Software. You MUST NOT
+   claim authorship of this Software, in whole or in part, when the
+   substantive code was created by the original authors above.
+
+3. RE-DISTRIBUTION & MODIFICATION
+
+   You MAY:
+   - Use this Software in any hospital, clinic, or healthcare facility,
+     free of charge, including for commercial use.
+   - Modify the Software to suit your institution's needs.
+   - Distribute copies (modified or unmodified) to others.
+   - Integrate the Software with other systems.
+
+   You MAY NOT:
+   - Remove, hide, or alter the attribution as described in clause 1.
+   - Re-brand the Software as your own product without preserving the
+     original credits.
+   - Sell the Software as a commercial product disguised as your own
+     creation.
+
+4. WARRANTY DISCLAIMER
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.
+   IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+   CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+   TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+   SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+------------------------------------------------------------
+VERSI BAHASA INDONESIA
+------------------------------------------------------------
+
+Hak Cipta (c) 2026 Alfian Nur Ihsan
+
+Dengan ini diberikan izin secara cuma-cuma kepada siapa pun yang
+memperoleh salinan perangkat lunak ini beserta file dokumentasi terkait
+("Perangkat Lunak"), untuk menggunakan Perangkat Lunak tanpa batasan,
+termasuk tanpa terkecuali hak untuk menggunakan, menyalin, memodifikasi,
+menggabungkan, menerbitkan, mendistribusikan, mensublisensikan,
+dan/atau menjual salinan Perangkat Lunak, dan untuk mengizinkan orang
+yang memperoleh Perangkat Lunak ini melakukan hal yang sama, dengan
+tunduk pada syarat-syarat berikut:
+
+
+1. KEWAJIBAN ATRIBUSI (WAJIB)
+
+   Pemberitahuan hak cipta di atas, pemberitahuan izin ini, dan setiap
+   atribusi pengembang yang ditampilkan dalam Perangkat Lunak (termasuk
+   namun tidak terbatas pada halaman "Tentang Aplikasi", footer
+   aplikasi, splash screen, dan komentar dalam kode sumber) WAJIB
+   dipertahankan dalam semua salinan, bagian substansial, dan karya
+   turunan dari Perangkat Lunak ini.
+
+   Secara spesifik, atribusi berikut DILARANG dihapus, disembunyikan,
+   diubah, atau diganti:
+
+   a. Nama Pengembang e-Dokter: "Alfian Nur Ihsan"
+   b. Nama Pengembang SIMRS Khanza: "Windiarto Nugroho"
+   c. Watermark, baris kredit, atau pemberitahuan "Powered by" yang
+      mengidentifikasi pembuat asli.
+
+
+2. LARANGAN PEMALSUAN ASAL-USUL
+
+   Anda DILARANG memalsukan asal-usul Perangkat Lunak ini. Anda
+   DILARANG mengklaim sebagai pencipta Perangkat Lunak ini, baik
+   sebagian maupun seluruhnya, ketika kode substansialnya dibuat oleh
+   pengembang asli yang disebutkan di atas.
+
+
+3. DISTRIBUSI ULANG & MODIFIKASI
+
+   Anda DIPERBOLEHKAN:
+   - Menggunakan Perangkat Lunak ini di rumah sakit, klinik, atau
+     fasilitas kesehatan mana pun, secara gratis, termasuk untuk
+     keperluan komersial (misal di RS swasta).
+   - Memodifikasi Perangkat Lunak agar sesuai dengan kebutuhan
+     instansi Anda.
+   - Mendistribusikan salinan (yang sudah dimodifikasi maupun yang
+     belum) kepada pihak lain.
+   - Mengintegrasikan Perangkat Lunak dengan sistem lain.
+
+   Anda DILARANG:
+   - Menghapus, menyembunyikan, atau mengubah atribusi sebagaimana
+     dijelaskan dalam Pasal 1.
+   - Me-rebrand Perangkat Lunak ini sebagai produk Anda sendiri tanpa
+     mempertahankan kredit pengembang asli.
+   - Menjual Perangkat Lunak ini sebagai produk komersial yang
+     menyamar sebagai karya Anda sendiri.
+
+
+4. KONSEKUENSI PELANGGARAN
+
+   Pelanggaran terhadap kewajiban atribusi (Pasal 1) atau larangan
+   pemalsuan asal-usul (Pasal 2) merupakan:
+
+   a. Pelanggaran terhadap lisensi ini, yang secara otomatis mencabut
+      seluruh hak yang diberikan kepada Pelanggar.
+   b. Pelanggaran terhadap Undang-Undang Republik Indonesia Nomor 28
+      Tahun 2014 tentang Hak Cipta, khususnya terkait Hak Moral
+      pencipta (Pasal 5 ayat 1 huruf c — pencantuman nama pencipta).
+
+   Pengembang asli berhak melakukan tindakan hukum berdasarkan
+   peraturan perundang-undangan yang berlaku.
+
+
+5. PENAFIAN JAMINAN
+
+   PERANGKAT LUNAK INI DISEDIAKAN "APA ADANYA", TANPA JAMINAN DALAM
+   BENTUK APA PUN, BAIK TERSURAT MAUPUN TERSIRAT, TERMASUK NAMUN TIDAK
+   TERBATAS PADA JAMINAN KELAYAKAN JUAL, KESESUAIAN UNTUK TUJUAN
+   TERTENTU, DAN TIDAK ADANYA PELANGGARAN HAK PIHAK KETIGA. DALAM
+   KEADAAN APA PUN, PENGARANG ATAU PEMEGANG HAK CIPTA TIDAK
+   BERTANGGUNG JAWAB ATAS KLAIM, KERUSAKAN, ATAU TANGGUNG JAWAB LAIN,
+   BAIK DALAM TINDAKAN KONTRAK, GUGATAN, ATAU SEBAB LAINNYA, YANG
+   TIMBUL DARI, AKIBAT, ATAU SEHUBUNGAN DENGAN PERANGKAT LUNAK ATAU
+   PENGGUNAAN ATAU PEMANFAATAN LAIN DARI PERANGKAT LUNAK INI.
+
+
+------------------------------------------------------------
+RINGKASAN UNTUK PEMBACA UMUM (NON-LEGAL)
+------------------------------------------------------------
+
+Dengan bahasa sederhana:
+
+✅ BOLEH:
+   - Pakai gratis di rumah sakit / klinik mana saja
+   - Modifikasi sesuai kebutuhan
+   - Bagikan ke pihak lain
+   - Pakai untuk RS komersial
+
+❌ DILARANG:
+   - Hapus / sembunyikan nama "Alfian Nur Ihsan" (Pengembang e-Dokter)
+   - Hapus / sembunyikan nama "Windiarto Nugroho" (Pengembang Khanza)
+   - Klaim aplikasi ini sebagai karya Anda sendiri
+   - Jual ulang sebagai produk Anda
+
+Aplikasi ini dibagikan GRATIS dengan harapan Anda menghargai pekerjaan
+kreatif dengan mempertahankan atribusi pengembang. Itu satu-satunya
+"bayaran" yang diminta.
+
+Terima kasih sudah menghargai karya kami. 🙏
+
+
+------------------------------------------------------------
+KONTAK
+------------------------------------------------------------
+
+Untuk pertanyaan terkait lisensi, izin khusus, atau pelaporan
+pelanggaran, silakan hubungi pengembang melalui kontak yang tertera
+pada halaman "Tentang Aplikasi" di dalam aplikasi.

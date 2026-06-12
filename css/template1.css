@@ -1,0 +1,342 @@
+/* ============================================
+   TEMPLATE1.CSS - Untuk Riwayat Pages
+   Support: dengan prefix t1- DAN tanpa prefix
+   ============================================ */
+
+/* ============================================
+   SECTION TITLE
+   ============================================ */
+.section-title,
+.t1-section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 16px 0 10px 0;
+    padding-bottom: 6px;
+    border-bottom: 2px solid #e2e8f0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.section-title:first-child,
+.t1-section-title:first-child {
+    margin-top: 0;
+}
+
+.section-title i,
+.t1-section-title i {
+    margin-right: 8px;
+    color: #dc2626;
+    font-size: 13px;
+}
+
+/* ============================================
+   INFO GRID - 3 Kolom
+   ============================================ */
+.info-grid,
+.t1-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px 12px;
+    margin-bottom: 8px;
+}
+
+/* Info Item - Horizontal */
+.info-item,
+.t1-info-item {
+    display: flex;
+    align-items: baseline;
+    padding: 4px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.info-label,
+.t1-info-label {
+    font-weight: 600;
+    color: #64748b;
+    font-size: 12px;
+    flex-shrink: 0;
+    line-height: 1.4;
+}
+
+.info-value,
+.t1-info-value {
+    color: #1e293b;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+    margin-left: 4px;
+}
+
+.info-value strong,
+.t1-info-value strong {
+    color: #10b981;
+}
+
+/* ============================================
+   INFO GRID VERTICAL
+   ============================================ */
+.info-grid-vertical,
+.t1-info-grid-vertical {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px 16px;
+    margin-bottom: 8px;
+}
+
+.info-item-vertical,
+.t1-info-item-vertical {
+    display: block;
+    padding: 6px 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.info-item-vertical .info-label,
+.info-item-vertical .t1-info-label,
+.t1-info-item-vertical .info-label,
+.t1-info-item-vertical .t1-info-label {
+    display: block;
+    font-weight: 600;
+    color: #64748b;
+    font-size: 11px;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.info-item-vertical .info-value,
+.info-item-vertical .t1-info-value,
+.t1-info-item-vertical .info-value,
+.t1-info-item-vertical .t1-info-value {
+    display: block;
+    color: #1e293b;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin-left: 0;
+}
+
+/* ============================================
+   CARD CONTAINER (untuk file yang sudah diupdate)
+   ============================================ */
+.t1-riwayat-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 16px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+/* Card Header */
+.t1-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    border-bottom: 1px solid #fca5a5;
+}
+
+.t1-header-icon {
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.t1-header-icon i {
+    font-size: 18px;
+    color: #dc2626;
+}
+
+.t1-header-info h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 700;
+    color: #991b1b;
+}
+
+.t1-header-meta {
+    font-size: 12px;
+    color: #b91c1c;
+}
+
+/* Card Body */
+.card-body,
+.t1-card-body {
+    padding: 16px;
+}
+
+/* ============================================
+   STATUS BADGES
+   ============================================ */
+.t1-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    border-radius: 4px;
+    text-transform: capitalize;
+}
+
+.t1-badge-normal {
+    background-color: #10b981;
+    color: #fff;
+}
+
+.t1-badge-abnormal {
+    background-color: #ef4444;
+    color: #fff;
+}
+
+.t1-badge-skip {
+    background-color: #fbbf24;
+    color: #1e293b;
+}
+
+/* ============================================
+   LOKALIS SECTION
+   ============================================ */
+.t1-lokalis-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.t1-lokalis-text {
+    display: block;
+}
+
+.t1-lokalis-text .info-label,
+.t1-lokalis-text .t1-info-label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+.t1-lokalis-text .info-value,
+.t1-lokalis-text .t1-info-value {
+    display: block;
+    margin-left: 0;
+}
+
+.t1-lokalis-image .info-label,
+.t1-lokalis-image .t1-info-label {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.img-lokalis,
+.t1-img-lokalis {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.img-lokalis:hover,
+.t1-img-lokalis:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ============================================
+   CONTENT BLOCK
+   ============================================ */
+.t1-content-block {
+    padding: 10px 12px;
+    background: #f8fafc;
+    border-radius: 6px;
+    border-left: 3px solid #dc2626;
+    font-size: 13px;
+    color: #334155;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+
+/* ============================================
+   LIST ITEMS
+   ============================================ */
+.list-items,
+.t1-list-items {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0;
+}
+
+.list-items li,
+.t1-list-items li {
+    padding: 5px 8px;
+    margin-bottom: 4px;
+    background: #f8fafc;
+    border-left: 3px solid #10b981;
+    border-radius: 3px;
+    font-size: 12px;
+    color: #334155;
+    line-height: 1.4;
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+.empty-state,
+.t1-empty-state {
+    color: #94a3b8;
+    font-style: italic;
+    font-size: 12px;
+    padding: 8px;
+}
+
+/* ============================================
+   UTILITIES
+   ============================================ */
+.t1-mt-2,
+.mt-2 {
+    margin-top: 8px;
+}
+
+.t1-full-width {
+    grid-column: 1 / -1;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 992px) {
+    .info-grid,
+    .t1-info-grid,
+    .info-grid-vertical,
+    .t1-info-grid-vertical {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .t1-lokalis-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .info-grid,
+    .t1-info-grid,
+    .info-grid-vertical,
+    .t1-info-grid-vertical {
+        grid-template-columns: 1fr;
+    }
+    
+    .t1-card-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .t1-header-info h4 {
+        font-size: 14px;
+    }
+}

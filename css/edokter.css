@@ -1,0 +1,1169 @@
+/* ============================================
+   E-DOKTER CUSTOM STYLES
+   File: edokter.css
+   Deskripsi: Custom styles untuk modul Diagnosa, Lab, Radiologi
+   ============================================ */
+
+/* ============================================
+   MODERN FORM STYLING
+   ============================================ */
+.form-control:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+    outline: none;
+}
+
+select.form-control:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+/* ============================================
+   ICD AUTOCOMPLETE LIST STYLING
+   ============================================ */
+
+/* Container untuk ICD list - PENTING untuk tidak overlap */
+#icd10List, #icd9List {
+    max-height: 300px;
+    overflow-y: auto;
+    background: white;
+    margin-top: 5px;
+    z-index: 9999 !important;
+}
+
+/* Item dalam ICD list */
+.icd-item {
+    padding: 12px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.icd-item:hover, .icd-item.selected {
+    background-color: #f8f9ff;
+    border-left: 3px solid #667eea;
+    padding-left: 12px;
+}
+
+.icd-item:last-child {
+    border-bottom: none;
+}
+
+/* State untuk loading, no data, dan error */
+.icd-item.loading, .icd-item.no-data, .icd-item.error {
+    text-align: center;
+    color: #999;
+    font-style: italic;
+    padding: 15px;
+}
+
+.icd-item.error {
+    color: #d32f2f;
+    background-color: #ffebee;
+}
+
+/* Styling untuk kode ICD */
+.icd-code {
+    font-weight: 600;
+    color: #667eea;
+    margin-right: 10px;
+    display: inline-block;
+    padding: 2px 8px;
+    background: #f0f4ff;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+/* Styling untuk nama penyakit/prosedur */
+.icd-name {
+    color: #333;
+    display: inline-block;
+    font-size: 14px;
+}
+
+.icd-name small {
+    display: block;
+    margin-top: 4px;
+    font-size: 11px;
+    color: #888;
+}
+
+/* Custom scrollbar untuk ICD list */
+#icd10List::-webkit-scrollbar, #icd9List::-webkit-scrollbar {
+    width: 6px;
+}
+
+#icd10List::-webkit-scrollbar-track, #icd9List::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#icd10List::-webkit-scrollbar-thumb, #icd9List::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 10px;
+}
+
+#icd10List::-webkit-scrollbar-thumb:hover, #icd9List::-webkit-scrollbar-thumb:hover {
+    background: #5568d3;
+}
+
+/* ============================================
+   TABLE MODERN STYLE
+   ============================================ */
+.table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* Default table header - gradient biru-ungu */
+.table thead th {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 500;
+    border: none;
+    padding: 12px 15px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Override untuk table dengan bg-green - gradient hijau */
+.table thead.bg-green th {
+    background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%) !important;
+    color: white;
+    font-weight: 500;
+    border: none;
+    padding: 12px 15px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Override untuk table dengan bg-orange - gradient orange */
+.table thead.bg-orange th {
+    background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%) !important;
+    color: white;
+    font-weight: 500;
+    border: none;
+    padding: 12px 15px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Override untuk table dengan bg-primary - gradient biru */
+.table thead.bg-primary th {
+    background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%) !important;
+    color: white;
+    font-weight: 500;
+    border: none;
+    padding: 12px 15px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table tbody td {
+    padding: 12px 15px;
+    border: 1px solid #f0f0f0;
+    font-size: 14px;
+}
+
+.table tbody tr {
+    transition: all 0.2s;
+    background: white;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9ff;
+}
+
+.table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+
+.table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}
+
+/* ============================================
+   CARD MODERN STYLE
+   ============================================ */
+.card {
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12) !important;
+}
+
+.card-body {
+    position: relative;
+}
+
+/* ============================================
+   FORM HELPERS
+   ============================================ */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* ============================================
+   BADGE MODERN STYLE
+   ============================================ */
+.badge-modern {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* Prioritas badge colors */
+.badge-primer {
+    background: #4CAF50;
+    color: white;
+}
+
+.badge-sekunder {
+    background: #FF9800;
+    color: white;
+}
+
+.badge-tersier {
+    background: #9E9E9E;
+    color: white;
+}
+
+/* ============================================
+   ALERT CUSTOM STYLE
+   ============================================ */
+.alert-info-custom {
+    background: #00BCD4;
+    color: white;
+    border: none;
+    border-radius: 0;
+    padding: 12px 20px;
+    margin-bottom: 0;
+}
+
+/* ============================================
+   GRADIENT HEADERS
+   ============================================ */
+.gradient-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 12px 12px 0 0;
+}
+
+.gradient-header h4 {
+    margin: 0;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+/* ============================================
+   BUTTON ENHANCEMENTS
+   ============================================ */
+.btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #5568d3 0%, #6a3f8f 100%);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.5);
+}
+
+.btn-danger {
+    background: #f44336;
+    border: none;
+}
+
+.btn-danger:hover {
+    background: #d32f2f;
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.4);
+}
+
+/* ============================================
+   ICON BUTTON - Tombol Bulat untuk Aksi
+   ============================================ */
+
+/* Icon Button Base */
+.btn-icon {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-icon i.material-icons {
+    font-size: 18px;
+    margin: 0;
+    vertical-align: middle;
+}
+
+/* Icon Button Colors */
+.btn-icon.btn-danger {
+    background: #f44336;
+    color: white;
+}
+
+.btn-icon.btn-danger:hover {
+    background: #d32f2f;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.5);
+}
+
+.btn-icon.btn-primary {
+    background: #2196f3;
+    color: white;
+}
+
+.btn-icon.btn-primary:hover {
+    background: #1976d2;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.5);
+}
+
+.btn-icon.btn-success {
+    background: #4caf50;
+    color: white;
+}
+
+.btn-icon.btn-success:hover {
+    background: #43a047;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.5);
+}
+
+.btn-icon.btn-warning {
+    background: #ff9800;
+    color: white;
+}
+
+.btn-icon.btn-warning:hover {
+    background: #f57c00;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.5);
+}
+
+.btn-icon.btn-info {
+    background: #00bcd4;
+    color: white;
+}
+
+.btn-icon.btn-info:hover {
+    background: #0097a7;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 188, 212, 0.5);
+}
+
+/* Icon Button Small */
+.btn-icon.btn-sm {
+    width: 28px;
+    height: 28px;
+}
+
+.btn-icon.btn-sm i.material-icons {
+    font-size: 16px;
+}
+
+/* Icon Button Large */
+.btn-icon.btn-lg {
+    width: 44px;
+    height: 44px;
+}
+
+.btn-icon.btn-lg i.material-icons {
+    font-size: 22px;
+}
+
+/* Ripple Effect */
+.btn-icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-icon:active::before {
+    width: 100%;
+    height: 100%;
+}
+
+/* Disabled State */
+.btn-icon:disabled,
+.btn-icon.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn-icon:disabled:hover,
+.btn-icon.disabled:hover {
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* ============================================
+   MATERIAL ICONS ALIGNMENT
+   ============================================ */
+.material-icons {
+    vertical-align: middle;
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Spacing */
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+/* Text styling */
+.text-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Box shadows */
+.shadow-sm {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.shadow-md {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+
+/* Border radius */
+.rounded-12 {
+    border-radius: 12px;
+}
+
+.rounded-8 {
+    border-radius: 8px;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+@media (max-width: 768px) {
+    .card-header h4 {
+        font-size: 16px;
+    }
+    
+    .table thead th {
+        font-size: 11px;
+        padding: 10px 8px;
+    }
+    
+    .table tbody td {
+        font-size: 12px;
+        padding: 10px 8px;
+    }
+    
+    #icd10List, #icd9List {
+        max-height: 200px;
+    }
+}
+
+/* ============================================
+   LOADING STATES
+   ============================================ */
+.loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    border-radius: 12px;
+}
+
+.loading-spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #667eea;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+    .card-header,
+    .btn,
+    .form-group,
+    .alert {
+        display: none;
+    }
+    
+    .table {
+        border: 1px solid #000;
+    }
+    
+    .table thead th {
+        background: #f0f0f0 !important;
+        color: #000 !important;
+        border: 1px solid #000;
+    }
+    
+    .table tbody td {
+        border: 1px solid #000;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Focus visible for keyboard navigation */
+*:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slide-down {
+    animation: slideDown 0.3s ease-out;
+}
+/* ============================================
+   MODERN SOAPIE FORM STYLING
+   ============================================ */
+
+/* Container utama SOAPIE dengan grid layout */
+.soapie-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Card untuk setiap section SOAPIE */
+.soapie-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.soapie-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+}
+
+/* Header setiap card dengan warna accent */
+.soapie-card-header {
+    padding: 12px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.soapie-card-header i.material-icons {
+    font-size: 20px;
+}
+
+/* Color scheme untuk tiap section */
+.soapie-card.subjective .soapie-card-header {
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+}
+
+.soapie-card.objective .soapie-card-header {
+    background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+}
+
+.soapie-card.assessment .soapie-card-header {
+    background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);
+}
+
+.soapie-card.plan .soapie-card-header {
+    background: linear-gradient(135deg, #9C27B0 0%, #7B1FA2 100%);
+}
+
+.soapie-card.intervention .soapie-card-header {
+    background: linear-gradient(135deg, #00BCD4 0%, #0097A7 100%);
+}
+
+.soapie-card.evaluation .soapie-card-header {
+    background: linear-gradient(135deg, #E91E63 0%, #C2185B 100%);
+}
+
+/* Body card */
+.soapie-card-body {
+    padding: 16px;
+}
+
+/* Modern textarea dengan auto-expand */
+.soapie-textarea {
+    width: 100%;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: none;
+    transition: all 0.3s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100px;
+    background: #fafafa;
+}
+
+.soapie-textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.soapie-textarea::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+/* Hover effect pada textarea */
+.soapie-textarea:hover:not(:focus) {
+    border-color: #bbb;
+    background: white;
+}
+
+/* Character counter */
+.soapie-char-count {
+    text-align: right;
+    font-size: 11px;
+    color: #999;
+    margin-top: 4px;
+    font-weight: 500;
+}
+
+/* Status indicator untuk field yang terisi */
+.soapie-card.filled .soapie-card-header::after {
+    content: '✓';
+    position: absolute;
+    right: 16px;
+    font-size: 16px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Responsive design untuk mobile */
+@media (max-width: 768px) {
+    .soapie-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .soapie-textarea {
+        min-height: 80px;
+        font-size: 13px;
+    }
+    
+    .soapie-card-header {
+        font-size: 13px;
+        padding: 10px 14px;
+    }
+    
+    .soapie-card-body {
+        padding: 12px;
+    }
+}
+
+/* Compact mode untuk layar kecil */
+@media (max-width: 992px) and (min-width: 769px) {
+    .soapie-textarea {
+        min-height: 90px;
+    }
+}
+
+/* Typing indicator */
+.soapie-card.typing .soapie-card-header::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background: white;
+    animation: typing-indicator 1.5s ease-in-out infinite;
+}
+
+@keyframes typing-indicator {
+    0%, 100% { width: 0%; left: 0; }
+    50% { width: 100%; left: 0; }
+}
+
+/* ============================================
+   MODERN VITAL SIGNS / PEMERIKSAAN FISIK
+   ============================================ */
+
+/* Container untuk pemeriksaan fisik */
+.vital-signs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Card untuk setiap vital sign */
+.vital-card {
+    background: white;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: all 0.3s ease;
+    border-left: 4px solid #667eea;
+    position: relative;
+    overflow: hidden;
+}
+
+.vital-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+/* Icon container di vital card */
+.vital-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+}
+
+.vital-icon i.material-icons {
+    font-size: 20px;
+    color: #667eea;
+}
+
+/* Label vital sign */
+.vital-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    display: block;
+}
+
+/* Input vital sign yang modern */
+.vital-input {
+    width: 100%;
+    border: 2px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    transition: all 0.3s ease;
+    background: #fafafa;
+}
+
+.vital-input:focus {
+    outline: none;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.vital-input::placeholder {
+    color: #ccc;
+    font-weight: 400;
+}
+
+/* Unit label di dalam input */
+.vital-input-wrapper {
+    position: relative;
+}
+
+.vital-unit {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 11px;
+    color: #999;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+/* Select dropdown untuk vital sign */
+.vital-select {
+    width: 100%;
+    border: 2px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    transition: all 0.3s ease;
+    background: #fafafa url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 9L1 4h10z'/%3E%3C/svg%3E") no-repeat right 12px center;
+    appearance: none;
+    cursor: pointer;
+}
+
+.vital-select:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Color variations untuk kategori berbeda */
+.vital-card.pressure {
+    border-left-color: #f44336;
+}
+
+.vital-card.pressure .vital-icon {
+    background: linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, rgba(211, 47, 47, 0.1) 100%);
+}
+
+.vital-card.pressure .vital-icon i {
+    color: #f44336;
+}
+
+.vital-card.temperature {
+    border-left-color: #ff9800;
+}
+
+.vital-card.temperature .vital-icon {
+    background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(245, 124, 0, 0.1) 100%);
+}
+
+.vital-card.temperature .vital-icon i {
+    color: #ff9800;
+}
+
+.vital-card.pulse {
+    border-left-color: #e91e63;
+}
+
+.vital-card.pulse .vital-icon {
+    background: linear-gradient(135deg, rgba(233, 30, 99, 0.1) 0%, rgba(194, 24, 91, 0.1) 100%);
+}
+
+.vital-card.pulse .vital-icon i {
+    color: #e91e63;
+}
+
+.vital-card.respiratory {
+    border-left-color: #00bcd4;
+}
+
+.vital-card.respiratory .vital-icon {
+    background: linear-gradient(135deg, rgba(0, 188, 212, 0.1) 0%, rgba(0, 151, 167, 0.1) 100%);
+}
+
+.vital-card.respiratory .vital-icon i {
+    color: #00bcd4;
+}
+
+.vital-card.physical {
+    border-left-color: #4caf50;
+}
+
+.vital-card.physical .vital-icon {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(67, 160, 71, 0.1) 100%);
+}
+
+.vital-card.physical .vital-icon i {
+    color: #4caf50;
+}
+
+.vital-card.neuro {
+    border-left-color: #9c27b0;
+}
+
+.vital-card.neuro .vital-icon {
+    background: linear-gradient(135deg, rgba(156, 39, 176, 0.1) 0%, rgba(123, 31, 162, 0.1) 100%);
+}
+
+.vital-card.neuro .vital-icon i {
+    color: #9c27b0;
+}
+
+.vital-card.oxygen {
+    border-left-color: #2196f3;
+}
+
+.vital-card.oxygen .vital-icon {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.1) 0%, rgba(25, 118, 210, 0.1) 100%);
+}
+
+.vital-card.oxygen .vital-icon i {
+    color: #2196f3;
+}
+
+.vital-card.allergy {
+    border-left-color: #ff5722;
+}
+
+.vital-card.allergy .vital-icon {
+    background: linear-gradient(135deg, rgba(255, 87, 34, 0.1) 0%, rgba(244, 81, 30, 0.1) 100%);
+}
+
+.vital-card.allergy .vital-icon i {
+    color: #ff5722;
+}
+
+/* Section header untuk vital signs */
+.vital-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.vital-section-header i.material-icons {
+    font-size: 28px;
+    color: #667eea;
+}
+
+.vital-section-header h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Status indicator untuk nilai abnormal */
+.vital-status {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e0e0e0;
+}
+
+.vital-status.normal {
+    background: #4caf50;
+}
+
+.vital-status.warning {
+    background: #ff9800;
+    animation: pulse-warning 2s ease-in-out infinite;
+}
+
+.vital-status.danger {
+    background: #f44336;
+    animation: pulse-danger 2s ease-in-out infinite;
+}
+
+@keyframes pulse-warning {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.3); }
+}
+
+@keyframes pulse-danger {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.4); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .vital-signs-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .vital-card {
+        padding: 12px;
+    }
+    
+    .vital-icon {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .vital-icon i.material-icons {
+        font-size: 18px;
+    }
+    
+    .vital-input {
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .vital-signs-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Quick stats summary (optional) */
+.vital-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    padding: 16px;
+    background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.vital-summary-item {
+    text-align: center;
+}
+
+.vital-summary-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #667eea;
+    display: block;
+}
+
+.vital-summary-label {
+    font-size: 11px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================
+   FIX: WAVES EFFECT STACKING ISSUE
+   Mencegah waves-ripple menumpuk dan menggelapkan button
+   ============================================ */
+
+/* Reset waves-ripple yang sudah selesai animasi */
+.waves-effect .waves-ripple {
+    opacity: 0 !important;
+}
+
+/* Pastikan button dengan gradient tidak terpengaruh waves stacking */
+.btn-simpan-semua-resep,
+.btn-simpan-semua-resep:hover,
+.btn-simpan-semua-resep:focus,
+.btn-simpan-semua-resep:active {
+    background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%) !important;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.4) !important;
+    border: none !important;
+    color: white !important;
+}
+
+/* Waves effect dengan warna terang untuk button hijau */
+.btn-simpan-semua-resep.waves-effect .waves-ripple {
+    background: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Fix untuk semua button dengan gradient background */
+.btn.waves-effect[style*="linear-gradient"] .waves-ripple,
+.btn-success.waves-effect .waves-ripple,
+.btn-primary.waves-effect .waves-ripple {
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+
+/* Pastikan button tidak berubah warna setelah diklik */
+.btn.waves-effect:not(:disabled):active,
+.btn.waves-effect:not(:disabled):focus {
+    outline: none !important;
+}
+
+/* Override btn-primary untuk konsistensi */
+.btn-primary.waves-effect,
+.btn-primary.waves-effect:hover,
+.btn-primary.waves-effect:focus,
+.btn-primary.waves-effect:active {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+/* Override btn-success untuk konsistensi */
+.btn-success.waves-effect,
+.btn-success.waves-effect:hover,
+.btn-success.waves-effect:focus,
+.btn-success.waves-effect:active {
+    background: linear-gradient(135deg, #4caf50 0%, #2e7d32 100%) !important;
+}

@@ -1,0 +1,113 @@
+<?php
+/**
+ * apply_update.php
+ * Handler penerima file update dari sistem auto-update E-Dokter.
+ * Dipanggil via POST dari tentangaplikasi.js
+ */
+
+// Wajib session aktif
+if(session_status() == PHP_SESSION_NONE) session_start();
+
+// Keamanan: akses hanya via POST dengan token yang benar (cek session opsional)
+if($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Content-Type: application/json');
+    echo json_encode(['status' => 'error', 'pesan' => 'Method tidak diizinkan.']);
+    exit;
+}
+
+header('Content-Type: application/json');
+
+// ── Validasi token ────────────────────────────────────────────
+$token = $_POST['token'] ?? '';
+if($token !== 'YangjualsialselamanyA') {
+    echo json_encode(['status' => 'error', 'pesan' => 'Token tidak valid.']);
+    exit;
+}
+
+// ── Ambil parameter ───────────────────────────────────────────
+$target = $_POST['target'] ?? '';
+$konten = $_POST['konten'] ?? '';
+
+if(empty($target)) {
+    echo json_encode(['status' => 'error', 'pesan' => 'Parameter target kosong.']);
+    exit;
+}
+// konten boleh string kosong (file kosong valid), cukup cek isset
+if(!isset($_POST['konten'])) {
+    echo json_encode(['status' => 'error', 'pesan' => 'Parameter konten tidak ada.']);
+    exit;
+}
+
+// versi_baru & update_selesai: dikirim di request terakhir untuk update versi.php
+$versi_baru     = $_POST['versi_baru']     ?? '';
+$update_selesai = $_POST['update_selesai'] ?? '0';
+
+// ── Keamanan: cegah path traversal, wajib diawali edokter/ ───
+$target = str_replace(['..', '\\'], ['', '/'], $target);
+$target = ltrim($target, '/');
+if(strpos($target, 'edokter/') !== 0) {
+    echo json_encode(['status' => 'error', 'pesan' => 'Target path tidak diizinkan: ' . $target]);
+    exit;
+}
+
+// ── Decode konten base64 ──────────────────────────────────────
+$isi = base64_decode($konten, true);
+if($isi === false) {
+    echo json_encode(['status' => 'error', 'pesan' => 'Konten tidak valid (bukan base64).']);
+    exit;
+}
+
+// ── Hitung path fisik ─────────────────────────────────────────
+// __FILE__ = C:\xampp\htdocs\edokter\pages\apply_update.php
+// dirname(__FILE__)      = C:\xampp\htdocs\edokter\pages
+// dirname(dirname())     = C:\xampp\htdocs\edokter
+// dirname(dirname(dirname())) = C:\xampp\htdocs
+$htdocs    = dirname(dirname(dirname(__FILE__))); // C:\xampp\htdocs
+$pathFisik = $htdocs . DIRECTORY_SEPARATOR . str_replace('/', DIRECTORY_SEPARATOR, $target);
+
+// ── Buat folder jika belum ada ────────────────────────────────
+$dir = dirname($pathFisik);
+if(!is_dir($dir)) {
+    if(!mkdir($dir, 0755, true)) {
+        echo json_encode(['status' => 'error', 'pesan' => 'Gagal membuat folder: ' . $dir]);
+        exit;
+    }
+}
+
+// ── Backup file lama ──────────────────────────────────────────
+if(file_exists($pathFisik)) {
+    copy($pathFisik, $pathFisik . '.bak_' . date('YmdHis'));
+}
+
+// ── Tulis file baru ───────────────────────────────────────────
+$hasil = file_put_contents($pathFisik, $isi);
+if($hasil === false) {
+    echo json_encode(['status' => 'error', 'pesan' => 'Gagal menulis file. Cek permission folder htdocs.']);
+    exit;
+}
+
+$responseData = [
+    'status' => 'ok',
+    'pesan'  => 'Berhasil diperbarui: ' . $target . ' (' . $hasil . ' bytes)',
+];
+
+// ── Update versi.php jika ini request terakhir ───────────────────
+if ($update_selesai === '1' && !empty($versi_baru) && preg_match('/^\d+\.\d+\.\d+$/', $versi_baru)) {
+    $versiPhpPath = dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'versi.php';
+    $versiKonten  = '<?php' . "\n"
+        . '/**' . "\n"
+        . ' * versi.php — diupdate otomatis oleh apply_update.php' . "\n"
+        . ' */' . "\n"
+        . 'header(\'Content-Type: application/json\');' . "\n"
+        . 'header(\'Access-Control-Allow-Origin: *\');' . "\n"
+        . 'header(\'Cache-Control: no-store, no-cache, must-revalidate\');' . "\n"
+        . 'echo json_encode([\'status\' => \'ok\', \'versi\' => \'' . $versi_baru . '\']);' . "\n";
+
+    if (file_put_contents($versiPhpPath, $versiKonten) !== false) {
+        $responseData['versi_diperbarui'] = $versi_baru;
+    } else {
+        $responseData['warning'] = 'File update berhasil tapi versi.php gagal diperbarui. Update manual versi.php.';
+    }
+}
+
+echo json_encode($responseData);

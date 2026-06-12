@@ -1,0 +1,411 @@
+/* ============================================
+   PEMERIKSAAN FISIK - VERSION 2.0 (HYBRID)
+   Combine: Clean layout + Icons + Color accent
+   ============================================ */
+
+/* Container dengan grid yang lebih compact */
+.vital-signs-container-v2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+/* Card dengan subtle shadow dan border accent */
+.vital-card-v2 {
+    background: white;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    padding: 16px 18px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.vital-card-v2::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.vital-card-v2:hover {
+    border-color: #d0d0d0;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.vital-card-v2:hover::before {
+    width: 6px;
+}
+
+/* Header dengan icon */
+.vital-header-v2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.vital-icon-v2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.vital-icon-v2 i.material-icons {
+    font-size: 18px;
+}
+
+.vital-label-v2 {
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    text-transform: none;
+    letter-spacing: 0.3px;
+    flex: 1;
+}
+
+/* Input yang lebih clean */
+.vital-input-v2 {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #e8e8e8;
+    padding: 8px 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.vital-input-v2:focus {
+    outline: none;
+    border-bottom-color: #667eea;
+}
+
+.vital-input-v2::placeholder {
+    color: #ccc;
+    font-weight: 400;
+}
+
+/* Select dropdown v2 */
+.vital-select-v2 {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #e8e8e8;
+    padding: 8px 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    background: transparent;
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right center;
+    padding-right: 20px;
+    transition: all 0.3s ease;
+}
+
+.vital-select-v2:focus {
+    outline: none;
+    border-bottom-color: #667eea;
+}
+
+/* Color variations untuk border accent */
+.vital-card-v2.pressure::before { background: #f44336; }
+.vital-card-v2.pressure .vital-icon-v2 { background: rgba(244, 67, 54, 0.1); }
+.vital-card-v2.pressure .vital-icon-v2 i { color: #f44336; }
+.vital-card-v2.pressure .vital-input-v2:focus,
+.vital-card-v2.pressure .vital-select-v2:focus { border-bottom-color: #f44336; }
+
+.vital-card-v2.temperature::before { background: #ff9800; }
+.vital-card-v2.temperature .vital-icon-v2 { background: rgba(255, 152, 0, 0.1); }
+.vital-card-v2.temperature .vital-icon-v2 i { color: #ff9800; }
+.vital-card-v2.temperature .vital-input-v2:focus { border-bottom-color: #ff9800; }
+
+.vital-card-v2.pulse::before { background: #e91e63; }
+.vital-card-v2.pulse .vital-icon-v2 { background: rgba(233, 30, 99, 0.1); }
+.vital-card-v2.pulse .vital-icon-v2 i { color: #e91e63; }
+.vital-card-v2.pulse .vital-input-v2:focus { border-bottom-color: #e91e63; }
+
+.vital-card-v2.respiratory::before { background: #00bcd4; }
+.vital-card-v2.respiratory .vital-icon-v2 { background: rgba(0, 188, 212, 0.1); }
+.vital-card-v2.respiratory .vital-icon-v2 i { color: #00bcd4; }
+.vital-card-v2.respiratory .vital-input-v2:focus { border-bottom-color: #00bcd4; }
+
+.vital-card-v2.physical::before { background: #4caf50; }
+.vital-card-v2.physical .vital-icon-v2 { background: rgba(76, 175, 80, 0.1); }
+.vital-card-v2.physical .vital-icon-v2 i { color: #4caf50; }
+.vital-card-v2.physical .vital-input-v2:focus { border-bottom-color: #4caf50; }
+
+.vital-card-v2.neuro::before { background: #9c27b0; }
+.vital-card-v2.neuro .vital-icon-v2 { background: rgba(156, 39, 176, 0.1); }
+.vital-card-v2.neuro .vital-icon-v2 i { color: #9c27b0; }
+.vital-card-v2.neuro .vital-input-v2:focus,
+.vital-card-v2.neuro .vital-select-v2:focus { border-bottom-color: #9c27b0; }
+
+.vital-card-v2.oxygen::before { background: #2196f3; }
+.vital-card-v2.oxygen .vital-icon-v2 { background: rgba(33, 150, 243, 0.1); }
+.vital-card-v2.oxygen .vital-icon-v2 i { color: #2196f3; }
+.vital-card-v2.oxygen .vital-input-v2:focus { border-bottom-color: #2196f3; }
+
+.vital-card-v2.allergy::before { background: #ff5722; }
+.vital-card-v2.allergy .vital-icon-v2 { background: rgba(255, 87, 34, 0.1); }
+.vital-card-v2.allergy .vital-icon-v2 i { color: #ff5722; }
+.vital-card-v2.allergy .vital-input-v2:focus { border-bottom-color: #ff5722; }
+
+/* Section header yang lebih subtle */
+.vital-section-header-v2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.vital-section-header-v2 i.material-icons {
+    font-size: 24px;
+    color: #667eea;
+}
+
+.vital-section-header-v2 h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .vital-signs-container-v2 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+    
+    .vital-card-v2 {
+        padding: 14px 16px;
+    }
+    
+    .vital-icon-v2 {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .vital-icon-v2 i.material-icons {
+        font-size: 16px;
+    }
+    
+    .vital-label-v2 {
+        font-size: 11px;
+    }
+    
+    .vital-input-v2,
+    .vital-select-v2 {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .vital-signs-container-v2 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Input wrapper untuk unit display yang lebih clean */
+.vital-input-wrapper-v2 {
+    position: relative;
+}
+
+.vital-unit-v2 {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 11px;
+    color: #999;
+    font-weight: 500;
+    pointer-events: none;
+    background: white;
+    padding-left: 4px;
+}
+/* ============================================
+   FIX untuk Select Dropdown V2
+   Tambahkan ini ke edokter_v2.css yang ada
+   ============================================ */
+
+/* Override select dropdown yang lebih specific */
+.vital-card-v2 .vital-select-v2 {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #e8e8e8;
+    padding: 8px 20px 8px 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #333;
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    /* Custom arrow dengan SVG */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right center;
+    
+    /* Pastikan tidak ada border/outline default */
+    outline: none;
+    box-shadow: none;
+    
+    /* Reset browser default */
+    height: auto;
+    line-height: normal;
+}
+
+.vital-card-v2 .vital-select-v2:focus {
+    outline: none;
+    border-bottom-color: #667eea;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* Hide default arrow di browser tertentu */
+.vital-card-v2 .vital-select-v2::-ms-expand {
+    display: none;
+}
+
+/* Styling untuk option */
+.vital-card-v2 .vital-select-v2 option {
+    padding: 8px;
+    background: white;
+    color: #333;
+}
+
+/* Focus state per kategori */
+.vital-card-v2.neuro .vital-select-v2:focus {
+    border-bottom-color: #9c27b0;
+}
+
+/* Pastikan placeholder option terlihat berbeda */
+.vital-card-v2 .vital-select-v2 option[value=""] {
+    color: #999;
+}
+
+/* Remove semua style konflik dari class lain */
+.vital-card-v2 select {
+    border-radius: 0;
+    box-shadow: none !important;
+}
+/* ============================================
+   FIX ICON VISIBILITY - Tingkatkan Contrast
+   Tambahkan di edokter_v2.css paling bawah
+   ============================================ */
+
+/* Tingkatkan opacity background icon dari 0.1 ke 0.15 */
+.vital-card-v2.temperature .vital-icon-v2 { 
+    background: rgba(255, 152, 0, 0.15) !important; 
+}
+
+.vital-card-v2.pulse .vital-icon-v2 { 
+    background: rgba(233, 30, 99, 0.15) !important; 
+}
+
+.vital-card-v2.respiratory .vital-icon-v2 { 
+    background: rgba(0, 188, 212, 0.15) !important; 
+}
+
+.vital-card-v2.physical .vital-icon-v2 { 
+    background: rgba(76, 175, 80, 0.15) !important; 
+}
+
+.vital-card-v2.oxygen .vital-icon-v2 { 
+    background: rgba(33, 150, 243, 0.15) !important; 
+}
+
+.vital-card-v2.neuro .vital-icon-v2 { 
+    background: rgba(156, 39, 176, 0.15) !important; 
+}
+
+/* Pastikan icon terlihat dengan font-weight */
+.vital-icon-v2 i.material-icons {
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    opacity: 1 !important;
+}
+
+/* Alternative: Pakai border untuk icon box */
+.vital-icon-v2 {
+    border: 1px solid rgba(0,0,0,0.08) !important;
+}
+/* ============================================
+   SUB-TABS SOAPIE: RAWAT JALAN & RAWAT INAP
+   Styling untuk nested tabs di dalam tab SOAPIE
+   ============================================ */
+
+/* Sub-Tabs Secondary Style for SOAPIE */
+.nav-tabs-secondary {
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 0;
+    background: #f8f9fa;
+    padding: 5px 10px 0 10px;
+    border-radius: 4px 4px 0 0;
+}
+
+.nav-tabs-secondary > li {
+    margin-bottom: -2px;
+}
+
+.nav-tabs-secondary > li > a {
+    color: #666;
+    font-weight: 500;
+    font-size: 13px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px 4px 0 0;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs-secondary > li > a:hover {
+    background: #fff;
+    color: #2196F3;
+    border: none;
+}
+
+.nav-tabs-secondary > li.active > a,
+.nav-tabs-secondary > li.active > a:focus,
+.nav-tabs-secondary > li.active > a:hover {
+    color: #2196F3;
+    background: #fff;
+    border: none;
+    border-bottom: 3px solid #2196F3;
+    font-weight: 600;
+}
+
+/* Adjust spacing for nested tabs */
+#tab_riwayat_soapie .tab-content {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-top: none;
+    padding: 15px;
+    min-height: 300px;
+}
+
+/* Responsive untuk sub-tabs */
+@media (max-width: 768px) {
+    .nav-tabs-secondary > li > a {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}

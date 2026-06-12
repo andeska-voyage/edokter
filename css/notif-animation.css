@@ -1,0 +1,512 @@
+/**
+ * notif-animation.css - Styling untuk sistem notifikasi unified
+ */
+
+/* ============================================
+   BELL SHAKE ANIMATION
+   ============================================ */
+.notification-bell.bell-shake {
+    animation: bellShake 0.5s ease-in-out;
+}
+
+@keyframes bellShake {
+    0%, 100% { transform: rotate(0deg); }
+    10%, 30%, 50%, 70%, 90% { transform: rotate(-10deg); }
+    20%, 40%, 60%, 80% { transform: rotate(10deg); }
+}
+
+/* ============================================
+   BADGE PULSE ANIMATION
+   ============================================ */
+.notification-badge {
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(244, 67, 54, 0.7);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 4px rgba(244, 67, 54, 0);
+    }
+}
+
+/* ============================================
+   NOTIFICATION DROPDOWN
+   ============================================ */
+.notification-dropdown.show {
+    animation: dropdownSlide 0.3s ease-out;
+}
+
+@keyframes dropdownSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   UNIFIED NOTIFICATION LIST
+   ============================================ */
+.notif-unified-list {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.notif-unified-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.notif-unified-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.notif-unified-list::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.notif-unified-list::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
+
+/* ============================================
+   ACTIONS HEADER (Mark All Button)
+   ============================================ */
+.notif-actions-header {
+    padding: 8px 12px;
+    border-bottom: 1px solid #e9ecef;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-mark-all-unified {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #fff;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-mark-all-unified:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+.btn-mark-all-unified i {
+    font-size: 16px;
+}
+
+/* ============================================
+   NOTIFICATION ITEM
+   ============================================ */
+.notif-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 12px 14px;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid #f0f0f0;
+    transition: all 0.2s ease;
+    position: relative;
+    animation: notifFadeIn 0.3s ease-out;
+    min-width: 0; /* Critical for flexbox children truncation */
+    max-width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+@keyframes notifFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notif-item:hover {
+    background: rgba(0, 123, 255, 0.05);
+    transform: translateX(3px);
+}
+
+.notif-item:last-child {
+    border-bottom: none;
+}
+
+/* Unread state */
+.notif-item.notif-unread {
+    background: linear-gradient(90deg, rgba(59, 130, 246, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+}
+
+.notif-item.notif-unread::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #3b82f6 0%, #60a5fa 100%);
+}
+
+/* Read state */
+.notif-item.notif-read {
+    opacity: 0.7;
+}
+
+.notif-item.notif-read:hover {
+    opacity: 1;
+}
+
+/* Hidden items - initially hidden, will be shown with flex */
+.notif-hidden-item {
+    display: none !important;
+}
+
+/* When expanded via JS, override to flex */
+.notif-item.notif-hidden-item[style*="display: flex"],
+.notif-item.notif-hidden-item[style*="display:flex"] {
+    display: flex !important;
+}
+
+/* ============================================
+   NOTIFICATION ICON
+   ============================================ */
+.notif-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.notif-icon i {
+    font-size: 20px;
+    color: #fff;
+}
+
+/* Icon variants by type */
+.notif-icon-lab {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.notif-icon-rad-hasil {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.notif-icon-rad-gambar {
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+}
+
+/* ============================================
+   NOTIFICATION CONTENT
+   ============================================ */
+.notif-content {
+    flex: 1;
+    min-width: 0; /* Critical for text truncation in flexbox */
+    max-width: calc(100% - 60px); /* Reserve space for icon and dot */
+    overflow: hidden;
+}
+
+.notif-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+    min-width: 0; /* Important for flexbox truncation */
+    max-width: 100%;
+}
+
+.notif-name {
+    font-weight: 600;
+    font-size: 13px;
+    color: #1f2937;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    min-width: 0; /* Important for text-overflow to work in flexbox */
+    max-width: calc(100% - 60px); /* Reserve space for status badge */
+}
+
+/* Status badge (Ralan/Ranap) */
+.notif-status-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+}
+
+.badge-ralan {
+    background: #dbeafe;
+    color: #1d4ed8;
+}
+
+.badge-ranap {
+    background: #fef3c7;
+    color: #b45309;
+}
+
+/* Description row */
+.notif-desc {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 4px;
+    min-width: 0; /* Important for flexbox truncation */
+    max-width: 100%;
+}
+
+.notif-desc span:first-child {
+    flex: 1;
+    min-width: 0; /* Important for text-overflow to work in flexbox */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: calc(100% - 80px); /* Reserve space for badge */
+}
+
+/* Type badge (Hasil Lab, Hasil Radiologi, Gambar Radiologi) */
+.notif-type-badge {
+    font-size: 9px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    flex-shrink: 0;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.type-lab {
+    background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+    color: #7c3aed;
+}
+
+.type-rad-hasil {
+    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+    color: #b45309;
+}
+
+.type-rad-gambar {
+    background: linear-gradient(135deg, #cffafe 0%, #a5f3fc 100%);
+    color: #0891b2;
+}
+
+/* Time */
+.notif-time {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+.notif-time i {
+    font-size: 14px;
+}
+
+/* ============================================
+   UNREAD DOT
+   ============================================ */
+.notif-unread-dot {
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 50%;
+    margin-left: 8px;
+    flex-shrink: 0;
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+}
+
+/* ============================================
+   SHOW MORE BUTTON
+   ============================================ */
+.notif-more {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 10px;
+    color: #3b82f6;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-top: 1px solid #e5e7eb;
+    background: #fafafa;
+}
+
+.notif-more:hover {
+    background: #f0f7ff;
+    color: #1d4ed8;
+}
+
+.notif-more i {
+    transition: transform 0.2s ease;
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+.notif-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #9ca3af;
+}
+
+.notif-empty i {
+    font-size: 48px;
+    margin-bottom: 12px;
+    opacity: 0.5;
+}
+
+.notif-empty p {
+    font-size: 14px;
+    margin: 0;
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+.notification-bell.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.notification-bell.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #fff;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: bellLoading 0.6s linear infinite;
+}
+
+@keyframes bellLoading {
+    to { transform: rotate(360deg); }
+}
+
+.notif-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    color: #6b7280;
+}
+
+.notif-loading p {
+    margin-top: 12px;
+    font-size: 13px;
+}
+
+/* ============================================
+   HOVER EFFECTS
+   ============================================ */
+.notification-bell:hover {
+    transform: scale(1.1);
+    transition: transform 0.2s ease;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .notif-unified-list {
+        max-height: 350px;
+    }
+    
+    .notif-item {
+        padding: 10px 12px;
+    }
+    
+    .notif-icon {
+        width: 34px;
+        height: 34px;
+    }
+    
+    .notif-icon i {
+        font-size: 18px;
+    }
+    
+    .notif-name {
+        font-size: 12px;
+    }
+    
+    .notif-desc {
+        font-size: 11px;
+    }
+    
+    .notif-type-badge {
+        font-size: 8px;
+        padding: 1px 4px;
+    }
+    
+    .btn-mark-all-unified {
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+}
+
+/* ============================================
+   ACCESSIBILITY - Reduce Motion
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+    .notification-bell.bell-shake,
+    .notification-badge,
+    .notif-item,
+    .notification-dropdown.show,
+    .notif-unread-dot {
+        animation: none !important;
+    }
+    
+    .notif-item:hover {
+        transform: none;
+    }
+}

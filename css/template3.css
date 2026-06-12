@@ -1,0 +1,829 @@
+/**
+ * template3.css
+ * CSS untuk Form Resume Medis Rawat Inap
+ * 
+ * Fitur:
+ * - Full screen layout dengan scroll internal
+ * - Responsive design (mobile & desktop)
+ * - Modern color scheme
+ * - Compact form layout
+ * - Tab-based navigation
+ * - Auto Fill, Kosongkan, Rapikan AI buttons
+ * - Dropdown Ambil Data
+ */
+
+/* =====================================================
+   TOMBOL AKSI HEADER (Auto Fill, Kosongkan, Rapikan AI)
+   ===================================================== */
+
+/* Tombol Auto Fill */
+.btn-auto-fill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(238, 90, 90, 0.3);
+}
+
+.btn-auto-fill:hover {
+    background: linear-gradient(135deg, #ff5252 0%, #e53935 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(238, 90, 90, 0.4);
+}
+
+.btn-auto-fill i {
+    font-size: 16px;
+}
+
+/* Tombol Kosongkan */
+.btn-kosongkan {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(255, 152, 0, 0.3);
+}
+
+.btn-kosongkan:hover {
+    background: linear-gradient(135deg, #f57c00 0%, #ef6c00 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
+}
+
+.btn-kosongkan i {
+    font-size: 16px;
+}
+
+/* Tombol Rapikan AI */
+.btn-rapikan-ai {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #4caf50 0%, #43a047 100%);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+}
+
+.btn-rapikan-ai:hover:not(:disabled) {
+    background: linear-gradient(135deg, #43a047 0%, #388e3c 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.btn-rapikan-ai:disabled {
+    background: linear-gradient(135deg, #a5d6a7 0%, #81c784 100%);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.btn-rapikan-ai i {
+    font-size: 16px;
+}
+
+/* =====================================================
+   LABEL WITH ACTION
+   ===================================================== */
+
+.label-with-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.label-with-action label {
+    margin-bottom: 0;
+}
+
+/* =====================================================
+   DROPDOWN AMBIL DATA
+   ===================================================== */
+
+.dropdown-ambil-data {
+    position: relative;
+}
+
+.btn-ambil-data {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #2196F3;
+    background: #e3f2fd;
+    border: 1px solid #2196F3;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-ambil-data:hover {
+    background: #2196F3;
+    color: white;
+}
+
+.btn-ambil-data i {
+    font-size: 14px;
+}
+
+/* Tombol Tambah Sumber */
+.btn-tambah-sumber {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    font-size: 16px;
+    color: white;
+    background: #2196F3;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-tambah-sumber:hover {
+    background: #1976D2;
+}
+
+.btn-tambah-sumber i {
+    font-size: 18px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin-top: 4px;
+    min-width: 160px;
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+    overflow: hidden;
+}
+
+.dropdown-content.dropdown-simple {
+    min-width: 160px;
+    max-width: 200px;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: #495057;
+    cursor: pointer;
+    transition: background 0.2s;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background: #f8f9fa;
+}
+
+.dropdown-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #2196F3;
+    cursor: pointer;
+}
+
+.dropdown-item.disabled {
+    color: #999;
+    font-style: italic;
+    cursor: default;
+}
+
+.dropdown-item.disabled:hover {
+    background: transparent;
+}
+
+/* =====================================================
+   DROPDOWN PREVIEW SECTION
+   ===================================================== */
+
+.dropdown-sources {
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 8px;
+}
+
+.dropdown-preview {
+    padding: 10px 12px;
+    background: #f8f9fa;
+}
+
+.preview-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #6c757d;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.preview-box {
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 10px;
+    min-height: 60px;
+    max-height: 150px;
+    overflow-y: auto;
+    font-size: 12px;
+}
+
+.preview-empty {
+    color: #adb5bd;
+    font-style: italic;
+}
+
+.preview-item {
+    padding: 8px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    border-left: 3px solid #2196F3;
+}
+
+.preview-item:last-child {
+    margin-bottom: 0;
+}
+
+.preview-item-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    margin-bottom: 4px;
+}
+
+.preview-item-check input[type="checkbox"] {
+    width: 14px;
+    height: 14px;
+    accent-color: #2196F3;
+}
+
+.preview-item-check strong {
+    color: #1976D2;
+    font-size: 11px;
+}
+
+.preview-item-content {
+    color: #495057;
+    font-size: 12px;
+    line-height: 1.5;
+    padding-left: 22px;
+}
+
+.dropdown-actions {
+    padding: 10px 12px;
+    border-top: 1px solid #e9ecef;
+    text-align: right;
+}
+
+.btn-terapkan {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    background: #2196F3;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-terapkan:hover {
+    background: #1976D2;
+}
+
+.btn-terapkan i {
+    font-size: 16px;
+}
+
+/* =====================================================
+   PREVIEW BOX SIDE (di samping textarea)
+   ===================================================== */
+
+.preview-box-side {
+    background: white;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 10px;
+    min-height: 80px;
+    max-height: 120px;
+    overflow-y: auto;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.btn-terapkan-full {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    background: #2196F3;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-terapkan-full:hover {
+    background: #1976D2;
+}
+
+.btn-terapkan-full i {
+    font-size: 16px;
+}
+
+/* =====================================================
+   AMBIL DATA COMPACT STYLE
+   ===================================================== */
+
+.ambil-data-compact {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    background: #fff;
+    min-height: 80px;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.ambil-data-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 8px 10px;
+    border-bottom: 1px solid #f1f1f1;
+    transition: background 0.2s;
+}
+
+.ambil-data-item:last-child {
+    border-bottom: none;
+}
+
+.ambil-data-item:hover {
+    background: #f8f9fa;
+}
+
+.ambil-data-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: #2196F3;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.ambil-data-label {
+    font-size: 11px;
+    color: #495057;
+    line-height: 1.4;
+    cursor: pointer;
+    word-break: break-word;
+}
+
+.ambil-data-item:has(input:checked) {
+    background: #e3f2fd;
+}
+
+.ambil-data-item:has(input:checked) .ambil-data-label {
+    color: #1976D2;
+    font-weight: 500;
+}
+
+.ambil-data-empty {
+    padding: 15px;
+    text-align: center;
+    color: #adb5bd;
+    font-size: 11px;
+    font-style: italic;
+}
+
+.ambil-data-header {
+    padding: 8px 12px;
+    background: #e3f2fd;
+    color: #1976D2;
+    font-size: 11px;
+    font-weight: 700;
+    border-bottom: 1px solid #bbdefb;
+    text-transform: uppercase;
+}
+
+.ambil-data-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.ambil-data-content strong {
+    display: block;
+    font-size: 11px;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.ambil-data-preview {
+    font-size: 10px;
+    color: #666;
+    line-height: 1.3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ambil-data-text {
+    flex: 1;
+    font-size: 11px;
+    color: #333;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    cursor: pointer;
+}
+
+/* =====================================================
+   TOMBOL TERAPKAN SMALL
+   ===================================================== */
+
+.btn-terapkan-sm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    padding: 6px 12px;
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+    background: #2196F3;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-terapkan-sm:hover {
+    background: #1976D2;
+}
+
+.btn-terapkan-sm i {
+    font-size: 14px;
+}
+
+/* =====================================================
+   AI RAPIKAN STYLES
+   ===================================================== */
+
+.ai-fields-list {
+    text-align: left;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.ai-field-item {
+    padding: 10px 15px;
+    border-bottom: 1px solid #f1f1f1;
+    transition: background 0.2s;
+}
+
+.ai-field-item:hover {
+    background: #f8f9fa;
+}
+
+.ai-field-item:last-child {
+    border-bottom: none;
+}
+
+.ai-field-item label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.ai-field-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #4caf50;
+}
+
+.ai-field-item span {
+    font-size: 13px;
+    color: #333;
+}
+
+.ai-progress {
+    width: 100%;
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    margin: 15px 0;
+    overflow: hidden;
+}
+
+.ai-progress-bar {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50, #81c784, #4caf50);
+    background-size: 200% 100%;
+    animation: progressAnim 1.5s ease-in-out infinite;
+}
+
+@keyframes progressAnim {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.ai-progress-text {
+    color: #666;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+/* =====================================================
+   AI RESULTS MODAL
+   ===================================================== */
+
+.ai-results-modal {
+    text-align: left;
+}
+
+.ai-result-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.ai-result-tab {
+    padding: 8px 15px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.ai-result-tab:hover {
+    background: #e8f5e9;
+    color: #4caf50;
+}
+
+.ai-result-tab.active {
+    background: #4caf50;
+    color: white;
+}
+
+.ai-result-content {
+    display: none;
+}
+
+.ai-result-content.active {
+    display: block;
+}
+
+.ai-result-section {
+    margin-bottom: 15px;
+}
+
+.ai-result-section label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.ai-original-text {
+    background: #fff3e0;
+    border: 1px solid #ffcc80;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #333;
+    max-height: 150px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+}
+
+.ai-result-textarea {
+    width: 100%;
+    min-height: 200px;
+    padding: 12px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #333;
+    background: #e8f5e9;
+    border: 2px solid #81c784;
+    border-radius: 8px;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.ai-result-textarea:focus {
+    outline: none;
+    border-color: #4caf50;
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+}
+
+/* SweetAlert Custom Styles */
+.ai-select-container,
+.ai-results-container {
+    padding: 0 !important;
+}
+
+/* =====================================================
+   PILIH OBAT MANUAL MODAL
+   ===================================================== */
+
+.obat-manual-container {
+    text-align: left;
+}
+
+.obat-manual-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.obat-manual-toolbar .btn-select-all,
+.obat-manual-toolbar .btn-deselect-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fff;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.obat-manual-toolbar .btn-select-all:hover {
+    background: #e3f2fd;
+    border-color: #1976d2;
+    color: #1976d2;
+}
+
+.obat-manual-toolbar .btn-deselect-all:hover {
+    background: #ffebee;
+    border-color: #e53935;
+    color: #e53935;
+}
+
+.obat-manual-toolbar .btn-select-all i,
+.obat-manual-toolbar .btn-deselect-all i {
+    font-size: 16px;
+}
+
+.obat-counter {
+    margin-left: auto;
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+}
+
+.obat-counter #obat-selected-count {
+    color: #1976d2;
+    font-weight: 700;
+}
+
+.obat-checkbox-list {
+    max-height: 350px;
+    overflow-y: auto;
+    padding: 5px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #fafafa;
+}
+
+.obat-checkbox-item {
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+}
+
+.obat-checkbox-item:hover {
+    background: #e3f2fd;
+}
+
+.obat-checkbox-item label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    margin: 0;
+    font-size: 13px;
+    color: #333;
+}
+
+.obat-checkbox-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #1976d2;
+}
+
+.obat-checkbox-item label span {
+    flex: 1;
+}
+
+.obat-manual-modal {
+    padding: 0 !important;
+}
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 768px) {
+    .btn-auto-fill,
+    .btn-kosongkan,
+    .btn-rapikan-ai {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+    
+    .btn-auto-fill i,
+    .btn-kosongkan i,
+    .btn-rapikan-ai i {
+        font-size: 14px;
+    }
+    
+    .dropdown-content {
+        min-width: 140px;
+    }
+    
+    .ai-result-tabs {
+        flex-direction: column;
+    }
+    
+    .ai-result-tab {
+        width: 100%;
+        text-align: center;
+    }
+}

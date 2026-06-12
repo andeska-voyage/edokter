@@ -1,0 +1,183 @@
+/* ============================================
+   DROPDOWN PASIEN FIX - OVERRIDE ALL
+   ============================================ */
+
+/* Remove overflow hidden dari semua parent */
+.page-content,
+.page-content .card,
+.page-content .card .body,
+.page-content .card > .body,
+.page-content .row,
+.page-content .row.clearfix,
+.page-content [class*="col-"],
+.page-content .patient-card,
+.page-content .patient-card .row,
+.page-content .patient-card > div,
+.page-content .patient-card [style*="float"],
+.page-content .patient-card [style*="width"] {
+    overflow: visible !important;
+}
+
+/* Preserve patient card rounded corners */
+.page-content .patient-card {
+    border-radius: 10px !important;
+}
+
+/* Dropdown Container */
+.dropdown-pasien {
+    position: relative !important;
+    display: inline-block !important;
+}
+
+/* Dropdown Menu */
+.dropdown-pasien-menu {
+    position: absolute !important;
+    top: 100% !important;
+    right: 0 !important;
+    left: auto !important;
+    z-index: 99999 !important;
+    display: none !important;
+    min-width: 200px !important;
+    max-height: none !important;
+    background: #fff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2) !important;
+    padding: 6px 0 !important;
+    margin-top: 4px !important;
+    list-style: none !important;
+}
+
+.dropdown-pasien-menu.show {
+    display: block !important;
+}
+
+/* Menu Items */
+.dropdown-pasien-menu > li {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+}
+
+.dropdown-pasien-menu > li > a {
+    display: block !important;
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+    color: #334155 !important;
+    text-decoration: none !important;
+    transition: all 0.15s ease !important;
+    white-space: nowrap !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+}
+
+.dropdown-pasien-menu > li > a:hover {
+    background: #f1f5f9 !important;
+    color: #10b981 !important;
+}
+
+/* Divider */
+.dropdown-pasien-menu > li.divider {
+    height: 1px !important;
+    margin: 6px 0 !important;
+    background: #e2e8f0 !important;
+    padding: 0 !important;
+}
+
+/* Has Submenu */
+.dropdown-pasien-menu .has-submenu {
+    position: relative !important;
+}
+
+.dropdown-pasien-menu .has-submenu > a {
+    padding-right: 30px !important;
+    position: relative !important;
+}
+
+.dropdown-pasien-menu .has-submenu > a::after {
+    content: '›' !important;
+    position: absolute !important;
+    right: 12px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+    color: #94a3b8 !important;
+    transition: all 0.2s !important;
+}
+
+.dropdown-pasien-menu .has-submenu.active > a {
+    background: #f1f5f9 !important;
+    color: #10b981 !important;
+}
+
+.dropdown-pasien-menu .has-submenu.active > a::after {
+    color: #10b981 !important;
+    transform: translateY(-50%) rotate(90deg) !important;
+}
+
+/* Submenu */
+.dropdown-submenu {
+    position: absolute !important;
+    top: 0 !important;
+    left: 100% !important;
+    min-width: 240px !important;
+    background: #fff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2) !important;
+    padding: 6px 0 !important;
+    margin-left: 4px !important;
+    display: none !important;
+    z-index: 100000 !important;
+    list-style: none !important;
+}
+
+.has-submenu.active > .dropdown-submenu {
+    display: block !important;
+}
+
+.dropdown-submenu > li {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.dropdown-submenu > li > a {
+    display: block !important;
+    padding: 10px 16px !important;
+    font-size: 13px !important;
+    color: #334155 !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+}
+
+.dropdown-submenu > li > a:hover {
+    background: #f1f5f9 !important;
+    color: #10b981 !important;
+}
+
+/* Responsive - Mobile */
+@media (max-width: 991px) {
+    .dropdown-submenu {
+        position: relative !important;
+        left: 0 !important;
+        top: 0 !important;
+        margin-left: 0 !important;
+        margin-top: 0 !important;
+        border: none !important;
+        border-left: 3px solid #10b981 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: #f8fafc !important;
+        padding-left: 10px !important;
+    }
+    
+    .dropdown-submenu > li > a {
+        padding: 8px 12px !important;
+        font-size: 12px !important;
+    }
+}

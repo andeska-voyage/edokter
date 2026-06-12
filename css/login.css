@@ -1,0 +1,428 @@
+/* ============================================
+   E-DOKTER LOGIN PAGE - CENTERED STYLE
+   Clean, Modern, Professional Design
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* ============================================
+   LOGIN CONTAINER
+   ============================================ */
+.login-container {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+/* ============================================
+   LOGIN CARD
+   ============================================ */
+.login-card {
+    width: 100%;
+    background: #fff;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+}
+
+/* ============================================
+   LOGO HEADER
+   ============================================ */
+.logo-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 32px;
+}
+
+.logo-img {
+    max-height: 90px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-header .logo-subtitle {
+    font-size: 11px;
+    font-weight: 600;
+    color: #94a3b8;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.logo-icon .material-icons {
+    font-size: 26px;
+    color: #fff;
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0f172a;
+    letter-spacing: 0.5px;
+}
+
+.logo-subtitle {
+    font-size: 11px;
+    color: #64748b;
+    margin-top: 2px;
+}
+
+/* ============================================
+   FORM HEADER
+   ============================================ */
+.form-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.form-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 8px;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper > .material-icons {
+    position: absolute;
+    left: 14px;
+    font-size: 20px;
+    color: #94a3b8;
+    pointer-events: none;
+}
+
+.form-input {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px 0 46px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #334155;
+    transition: all 0.2s ease;
+    background: #fff;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+}
+
+.form-input::placeholder {
+    color: #94a3b8;
+}
+
+/* Toggle Password */
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-password .material-icons {
+    font-size: 20px;
+    color: #94a3b8;
+    transition: color 0.2s;
+}
+
+.toggle-password:hover .material-icons {
+    color: #64748b;
+}
+
+/* ============================================
+   CAPTCHA
+   ============================================ */
+.captcha-wrapper {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+}
+
+.captcha-image {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.captcha-image img {
+    height: 48px;
+    width: auto;
+    min-width: 120px;
+    border-radius: 10px;
+    display: block;
+    object-fit: contain;
+    background: #3b82f6;
+}
+
+.refresh-captcha {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 28px;
+    height: 28px;
+    background: #fff;
+    border: 2px solid #e2e8f0;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.refresh-captcha:hover {
+    background: #f8fafc;
+    border-color: #10b981;
+}
+
+.refresh-captcha .material-icons {
+    font-size: 16px;
+    color: #64748b;
+}
+
+.captcha-input {
+    flex: 1;
+}
+.captcha-input .form-input {
+    padding-left: 15px !important; /* sesuaikan dengan kebutuhan */
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn-login {
+    width: 100%;
+    height: 48px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.btn-login .material-icons {
+    font-size: 20px;
+}
+
+.btn-reset {
+    width: 100%;
+    height: 44px;
+    background: #f1f5f9;
+    color: #64748b;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-reset:hover {
+    background: #e2e8f0;
+    color: #475569;
+}
+
+/* ============================================
+   ALERTS
+   ============================================ */
+.alert-error {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    margin-top: 16px;
+}
+
+.alert-error .material-icons {
+    font-size: 20px;
+    color: #ef4444;
+}
+
+.alert-error span {
+    font-size: 13px;
+    color: #dc2626;
+    font-weight: 500;
+}
+
+/* ============================================
+   FORM FOOTER
+   ============================================ */
+.form-footer {
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.form-footer p {
+    font-size: 13px;
+    color: #64748b;
+}
+
+.form-footer a {
+    color: #10b981;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   PAGE FOOTER
+   ============================================ */
+.page-footer {
+    text-align: center;
+}
+
+.page-footer p {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.page-footer strong {
+    color: #10b981;
+}
+
+/* ============================================
+   ERROR MESSAGE
+   ============================================ */
+.error-msg {
+    font-size: 12px;
+    color: #ef4444;
+    margin-top: 6px;
+    display: block;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 480px) {
+    .login-card {
+        padding: 28px 24px;
+        border-radius: 16px;
+    }
+    
+    .logo-header {
+        margin-bottom: 24px;
+    }
+    
+    .logo-icon {
+        width: 42px;
+        height: 42px;
+    }
+    
+    .logo-icon .material-icons {
+        font-size: 22px;
+    }
+    
+    .logo-title {
+        font-size: 20px;
+    }
+    
+    .form-header h2 {
+        font-size: 20px;
+    }
+    
+    .form-header p {
+        font-size: 13px;
+    }
+    
+    .captcha-wrapper {
+        flex-direction: column;
+    }
+    
+    .captcha-image {
+        width: 100%;
+    }
+    
+    .captcha-image img {
+        width: 100%;
+        min-width: unset;
+    }
+}

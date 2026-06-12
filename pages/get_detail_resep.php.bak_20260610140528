@@ -1,0 +1,219 @@
+<?php
+// Output buffering
+ob_start();
+
+// Cek apakah session sudah dimulai
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+require_once('../conf/conf.php');
+
+// Bersihkan buffer
+ob_end_clean();
+
+// Set header JSON
+header('Content-Type: application/json');
+
+// Validasi session
+if(!isset($_SESSION["ses_dokter"])){
+    echo json_encode(['status' => 'error', 'message' => 'Session expired']);
+    exit();
+}
+
+// ============================================================
+// GET DETAIL RESEP (untuk Copy Resep)
+// ============================================================
+$no_resep = isset($_REQUEST['no_resep']) ? $_REQUEST['no_resep'] : '';
+
+if(empty($no_resep)) {
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'No resep tidak boleh kosong'
+    ]);
+    exit();
+}
+    
+    // Buka koneksi database menggunakan function dari conf.php
+    $db_connection = bukakoneksi();
+    
+    if(!$db_connection) {
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Koneksi database gagal'
+        ]);
+        exit();
+    }
+    
+    try {
+        // ============================================================
+        // QUERY OBAT NON RACIKAN dari tabel resep_dokter
+        // Join langsung dari resep_dokter berdasarkan no_resep
+        // ============================================================
+        $queryNonRacikan = "
+            SELECT 
+                rd.kode_brng,
+                COALESCE(db.nama_brng, 'Obat') as nama_brng,
+                rd.jml,
+                COALESCE(rd.aturan_pakai, '-') as aturan_pakai
+            FROM resep_dokter rd
+            LEFT JOIN databarang db ON rd.kode_brng = db.kode_brng
+            WHERE rd.no_resep = ?
+            AND rd.kode_brng IS NOT NULL
+            AND rd.kode_brng != ''
+            ORDER BY rd.kode_brng
+        ";
+        
+        $stmtNonRacikan = $db_connection->prepare($queryNonRacikan);
+        if (!$stmtNonRacikan) {
+            throw new Exception('Prepare statement non racikan gagal: ' . $db_connection->error);
+        }
+        
+        $stmtNonRacikan->bind_param('s', $no_resep);
+        if (!$stmtNonRacikan->execute()) {
+            throw new Exception('Execute non racikan gagal: ' . $stmtNonRacikan->error);
+        }
+        
+        $resultNonRacikan = $stmtNonRacikan->get_result();
+        
+        $obatNonRacikan = [];
+        while ($row = $resultNonRacikan->fetch_assoc()) {
+            $obatNonRacikan[] = [
+                'kode_brng' => $row['kode_brng'],
+                'nama_brng' => $row['nama_brng'],
+                'jml' => $row['jml'],
+                'satuan' => 'TAB', // Default satuan
+                'aturan_pakai' => $row['aturan_pakai']
+            ];
+        }
+        $stmtNonRacikan->close();
+        
+        // ============================================================
+        // QUERY OBAT RACIKAN dari tabel resep_dokter_racikan
+        // Ambil nama_racik langsung dari tabel resep_dokter_racikan
+        // ============================================================
+        $queryRacikan = "
+            SELECT 
+                rdr.no_racik,
+                rdr.nama_racik,
+                rdr.kd_racik,
+                rdr.jml_dr,
+                COALESCE(rdr.aturan_pakai, '-') as aturan_pakai,
+                COALESCE(rdr.keterangan, '') as keterangan,
+                COALESCE(mr.nm_racik, 'Puyer') as metode_racik
+            FROM resep_dokter_racikan rdr
+            LEFT JOIN metode_racik mr ON rdr.kd_racik = mr.kd_racik
+            WHERE rdr.no_resep = ?
+            GROUP BY rdr.no_racik
+            ORDER BY rdr.no_racik
+        ";
+        
+        $stmtRacikan = $db_connection->prepare($queryRacikan);
+        if (!$stmtRacikan) {
+            throw new Exception('Prepare statement racikan gagal: ' . $db_connection->error);
+        }
+        
+        $stmtRacikan->bind_param('s', $no_resep);
+        if (!$stmtRacikan->execute()) {
+            throw new Exception('Execute racikan gagal: ' . $stmtRacikan->error);
+        }
+        
+        $resultRacikan = $stmtRacikan->get_result();
+        
+        $obatRacikan = [];
+        while ($row = $resultRacikan->fetch_assoc()) {
+            // ============================================================
+            // QUERY KOMPOSISI RACIKAN dari resep_dokter_racikan_detail
+            // Join langsung berdasarkan no_resep dan no_racik
+            // ============================================================
+            $queryKomposisi = "
+                SELECT 
+                    rdrd.kode_brng,
+                    COALESCE(db.nama_brng, 'Obat') as nama_brng,
+                    COALESCE(db.kapasitas, 0) as kapasitas,
+                    COALESCE(rdrd.kandungan, 0) as kandungan,
+                    COALESCE(rdrd.jml, 0) as jml
+                FROM resep_dokter_racikan_detail rdrd
+                LEFT JOIN databarang db ON rdrd.kode_brng = db.kode_brng
+                WHERE rdrd.no_resep = ?
+                AND rdrd.no_racik = ?
+                ORDER BY rdrd.kode_brng
+            ";
+            
+            $stmtKomp = $db_connection->prepare($queryKomposisi);
+            if (!$stmtKomp) {
+                throw new Exception('Prepare statement komposisi gagal: ' . $db_connection->error);
+            }
+            
+            $stmtKomp->bind_param('si', $no_resep, $row['no_racik']);
+            if (!$stmtKomp->execute()) {
+                throw new Exception('Execute komposisi gagal: ' . $stmtKomp->error);
+            }
+            
+            $resultKomp = $stmtKomp->get_result();
+            
+            $komposisi = [];
+            while ($komp = $resultKomp->fetch_assoc()) {
+                // kapasitas = dosis obat (dari databarang) -> 200 mg, 500 mg
+                // kandungan = dosis diberi untuk racikan ini -> 120
+                // jml = jumlah obat yang dibutuhkan -> 7.2, 7.7
+                $dosis_obat = floatval($komp['kapasitas']); // 200, 500
+                $dosis_diberi = floatval($komp['kandungan']); // 120
+                $jml_racikan = floatval($komp['jml']); // 7.2, 7.7
+                
+                $komposisi[] = [
+                    'kode_brng' => $komp['kode_brng'],
+                    'nama_brng' => $komp['nama_brng'],
+                    'dosis_obat' => $dosis_obat,
+                    'dosis_diberi' => $dosis_diberi,
+                    'jml_racikan' => number_format($jml_racikan, 2, '.', ''),
+                    'satuan' => 'TAB'
+                ];
+            }
+            $stmtKomp->close();
+            
+            // Tambahkan racikan dengan komposisinya
+            $obatRacikan[] = [
+                'no_racik' => $row['no_racik'],
+                'nama_racik' => $row['nama_racik'], // ✅ Ambil dari query (bukan hardcode)
+                'metode_racik' => $row['metode_racik'],
+                'kd_racik' => $row['kd_racik'], // ✅ Tambahkan kd_racik
+                'jml_dr' => $row['jml_dr'],
+                'aturan_pakai' => $row['aturan_pakai'],
+                'keterangan' => $row['keterangan'],
+                'komposisi' => $komposisi
+            ];
+        }
+        $stmtRacikan->close();
+        
+        // ============================================================
+        // RESPONSE
+        // ============================================================
+        echo json_encode([
+            'status' => 'success',
+            'data' => [
+                'no_resep' => $no_resep,
+                'obat_non_racikan' => $obatNonRacikan,
+                'obat_racikan' => $obatRacikan
+            ],
+            'count' => [
+                'non_racikan' => count($obatNonRacikan),
+                'racikan' => count($obatRacikan)
+            ]
+        ]);
+        
+        // Tutup koneksi
+        mysqli_close($db_connection);
+        
+    } catch (Exception $e) {
+        // Tutup koneksi jika error
+        if(isset($db_connection) && $db_connection) {
+            mysqli_close($db_connection);
+        }
+        
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Error get detail resep: ' . $e->getMessage()
+        ]);
+    }
+?>

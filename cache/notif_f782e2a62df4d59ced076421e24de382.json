@@ -1,0 +1,13 @@
+{
+    "date": "2026-03-11",
+    "kd_dokter": "19041990",
+    "read_lab": [],
+    "read_rad_hasil": [],
+    "read_rad_gambar": [
+        "RAD_GAMBAR_2026\/03\/11\/000050_2026-03-11_10:28:38",
+        "RAD_GAMBAR_2026\/03\/11\/000015_2026-03-11_10:22:38"
+    ],
+    "last_seen": null,
+    "dismissed_all": false,
+    "updated_at": "2026-03-11 10:47:04"
+}

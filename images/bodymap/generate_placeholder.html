@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head><title>Generate Body Map PNGs</title></head>
+<body>
+<p>Klik tombol untuk generate gambar body map placeholder. Setelah itu, ganti file PNG di <code>images/bodymap/</code> dengan gambar anatomi buatan sendiri.</p>
+
+<div id="output" style="display:flex; flex-wrap:wrap; gap:20px;"></div>
+
+<script>
+/**
+ * Generator gambar body map placeholder
+ * Jalankan file ini di browser, lalu save gambar yang muncul
+ * Atau langsung replace file di images/bodymap/ dengan gambar sendiri
+ */
+
+var configs = [
+    { id: 'body_front', label: 'ANTERIOR (Depan)', w: 340, h: 520, type: 'fullbody_front' },
+    { id: 'body_back', label: 'POSTERIOR (Belakang)', w: 340, h: 520, type: 'fullbody_back' },
+    { id: 'head_front', label: 'WAJAH (Depan)', w: 300, h: 400, type: 'head_front' },
+    { id: 'head_side', label: 'KEPALA (Samping)', w: 300, h: 400, type: 'head_side' },
+    { id: 'hand_palmar', label: 'TANGAN - Palmar', w: 280, h: 400, type: 'hand_palmar' },
+    { id: 'hand_dorsal', label: 'TANGAN - Dorsal', w: 280, h: 400, type: 'hand_dorsal' },
+    { id: 'foot_dorsal', label: 'KAKI - Dorsal', w: 260, h: 400, type: 'foot_dorsal' },
+    { id: 'foot_plantar', label: 'KAKI - Plantar', w: 260, h: 400, type: 'foot_plantar' }
+];
+
+var outDiv = document.getElementById('output');
+
+configs.forEach(function(cfg) {
+    var canvas = document.createElement('canvas');
+    canvas.width = cfg.w;
+    canvas.height = cfg.h;
+    var ctx = canvas.getContext('2d');
+
+    // Background
+    ctx.fillStyle = '#fafbfc';
+    ctx.fillRect(0, 0, cfg.w, cfg.h);
+
+    // Grid
+    ctx.strokeStyle = '#f0f0f0';
+    ctx.lineWidth = 0.5;
+    for (var i = 0; i < cfg.w; i += 20) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, cfg.h); ctx.stroke(); }
+    for (var j = 0; j < cfg.h; j += 20) { ctx.beginPath(); ctx.moveTo(0, j); ctx.lineTo(cfg.w, j); ctx.stroke(); }
+
+    // Placeholder text
+    ctx.fillStyle = '#cbd5e1';
+    ctx.font = 'bold 14px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(cfg.label, cfg.w / 2, 25);
+
+    ctx.font = '11px sans-serif';
+    ctx.fillText('Ganti file PNG ini', cfg.w / 2, cfg.h / 2 - 10);
+    ctx.fillText('dengan gambar anatomi', cfg.w / 2, cfg.h / 2 + 8);
+    ctx.fillText('images/bodymap/' + cfg.id + '.png', cfg.w / 2, cfg.h / 2 + 28);
+
+    // Border
+    ctx.strokeStyle = '#e2e8f0';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(0.5, 0.5, cfg.w - 1, cfg.h - 1);
+
+    // Display
+    var wrap = document.createElement('div');
+    wrap.style.textAlign = 'center';
+
+    var title = document.createElement('div');
+    title.textContent = cfg.id + '.png (' + cfg.w + 'x' + cfg.h + ')';
+    title.style.fontWeight = 'bold';
+    title.style.marginBottom = '5px';
+    title.style.fontSize = '12px';
+    wrap.appendChild(title);
+
+    var img = new Image();
+    img.src = canvas.toDataURL('image/png');
+    img.style.border = '1px solid #ccc';
+    wrap.appendChild(img);
+
+    var link = document.createElement('a');
+    link.href = canvas.toDataURL('image/png');
+    link.download = cfg.id + '.png';
+    link.textContent = 'Download ' + cfg.id + '.png';
+    link.style.display = 'block';
+    link.style.marginTop = '5px';
+    link.style.fontSize = '11px';
+    wrap.appendChild(link);
+
+    outDiv.appendChild(wrap);
+});
+</script>
+</body>
+</html>

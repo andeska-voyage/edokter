@@ -1,0 +1,399 @@
+/* ==========================================
+   CUSTOM SWEETALERT2 CSS - ULTRA SIMPLE FIX
+   File: css/custom-sweetalert.css
+   Anti Stuck Version
+   ========================================== */
+
+/* CRITICAL FIX - Container harus clickable */
+.swal2-container {
+    z-index: 999999 !important;
+}
+
+/* Popup styling */
+.swal2-popup {
+    border-radius: 20px !important;
+    padding: 30px !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+    border: none !important;
+    animation: slideInDown 0.3s ease-out;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Title */
+.swal2-title {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    color: #333 !important;
+    margin-bottom: 10px !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+/* Content */
+.swal2-html-container {
+    font-size: 16px !important;
+    color: #666 !important;
+    line-height: 1.6 !important;
+    margin: 15px 0 !important;
+}
+
+/* Icons */
+.swal2-success {
+    border-color: #4CAF50 !important;
+}
+
+.swal2-success .swal2-success-ring {
+    border-color: rgba(76, 175, 80, 0.3) !important;
+}
+
+.swal2-success .swal2-success-line-tip,
+.swal2-success .swal2-success-line-long {
+    background-color: #4CAF50 !important;
+}
+
+.swal2-error {
+    border-color: #f44336 !important;
+}
+
+.swal2-error .swal2-x-mark-line-left,
+.swal2-error .swal2-x-mark-line-right {
+    background-color: #f44336 !important;
+}
+
+.swal2-warning {
+    border-color: #FF9800 !important;
+    color: #FF9800 !important;
+}
+
+.swal2-info {
+    border-color: #2196F3 !important;
+    color: #2196F3 !important;
+}
+
+.swal2-question {
+    border-color: #667eea !important;
+    color: #667eea !important;
+}
+
+/* TOMBOL - INI YANG PALING PENTING */
+.swal2-confirm {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 12px 35px !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    text-transform: none !important;
+}
+
+.swal2-confirm:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5) !important;
+}
+
+.swal2-cancel {
+    background: #e0e0e0 !important;
+    color: #666 !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 12px 35px !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    text-transform: none !important;
+}
+
+.swal2-cancel:hover {
+    background: #d0d0d0 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.swal2-deny {
+    background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 10px !important;
+    padding: 12px 35px !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4) !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    text-transform: none !important;
+}
+
+.swal2-actions {
+    margin-top: 25px !important;
+    gap: 12px !important;
+}
+
+/* Focus state */
+.swal2-confirm:focus,
+.swal2-cancel:focus,
+.swal2-deny:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3) !important;
+}
+
+/* Close button */
+.swal2-close {
+    color: #999 !important;
+    font-size: 28px !important;
+    transition: all 0.2s !important;
+}
+
+.swal2-close:hover {
+    color: #666 !important;
+    transform: rotate(90deg) !important;
+}
+
+/* Input fields */
+.swal2-input,
+.swal2-textarea {
+    border: 2px solid #e0e0e0 !important;
+    border-radius: 10px !important;
+    padding: 12px 15px !important;
+    font-size: 14px !important;
+    transition: all 0.3s !important;
+}
+
+.swal2-input:focus,
+.swal2-textarea:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+    outline: none !important;
+}
+
+/* Progress bar */
+.swal2-timer-progress-bar {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%) !important;
+    height: 4px !important;
+}
+
+/* Footer */
+.swal2-footer {
+    border-top: 1px solid #f0f0f0 !important;
+    padding-top: 20px !important;
+    margin-top: 20px !important;
+    color: #999 !important;
+    font-size: 13px !important;
+}
+
+/* Backdrop */
+.swal2-backdrop-show {
+    background: rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Toast */
+.swal2-toast {
+    border-radius: 12px !important;
+    padding: 15px 20px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.swal2-toast .swal2-title {
+    font-size: 16px !important;
+    margin: 0 !important;
+}
+
+.swal2-toast .swal2-icon {
+    margin: 0 10px 0 0 !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .swal2-popup {
+        width: 90% !important;
+        padding: 20px !important;
+    }
+    
+    .swal2-title {
+        font-size: 20px !important;
+    }
+    
+    .swal2-html-container {
+        font-size: 14px !important;
+    }
+    
+    .swal2-confirm,
+    .swal2-cancel,
+    .swal2-deny {
+        padding: 10px 25px !important;
+        font-size: 14px !important;
+    }
+}
+
+/* Validation message */
+.swal2-validation-message {
+    background: #ffebee !important;
+    color: #d32f2f !important;
+    border-radius: 8px !important;
+    padding: 10px 15px !important;
+    font-size: 13px !important;
+}
+
+/* Loading spinner */
+.swal2-loader {
+    border-color: #667eea transparent #667eea transparent !important;
+}
+
+/* Scrollbar */
+.swal2-popup::-webkit-scrollbar {
+    width: 6px;
+}
+
+.swal2-popup::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.swal2-popup::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 10px;
+}
+
+.swal2-popup::-webkit-scrollbar-thumb:hover {
+    background: #5568d3;
+}
+/* ==========================================
+   COPY SOAPIE FIX - Append di akhir custom-sweetalert.css
+   Tambahan ini untuk fix backdrop hitam & shadow
+   ========================================== */
+
+/* FIX 1: Remove backdrop shadow untuk notification copy */
+.swal2-container {
+    background-color: transparent !important;
+}
+
+.swal2-container.swal2-backdrop-show {
+    background: rgba(0, 0, 0, 0) !important;
+}
+
+/* FIX 2: Body overflow saat Swal muncul */
+body.swal2-shown:not(.swal2-no-backdrop):not(.swal2-toast-shown) {
+    overflow: visible !important;
+}
+
+/* FIX 3: Custom class untuk copy success notification */
+.swal-copy-success {
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2) !important;
+    border-radius: 20px !important;
+    z-index: 99999 !important;
+}
+
+/* ==========================================
+   CUSTOM TOAST FALLBACK (jika SweetAlert tidak ada)
+   ========================================== */
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+}
+
+.custom-toast {
+    animation: slideInRight 0.3s ease forwards;
+}
+
+.custom-toast.hide {
+    animation: slideOutRight 0.3s ease forwards;
+}
+
+.custom-toast:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2) !important;
+    transform: scale(1.02);
+    transition: all 0.2s ease;
+}
+
+.custom-toast .material-icons {
+    animation: bounceIn 0.5s ease;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ==========================================
+   ENHANCEMENT: Button & Form Effects
+   ========================================== */
+
+/* Copy button hover effect */
+.copy_soap {
+    transition: all 0.2s ease;
+}
+
+.copy_soap:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.copy_soap:active {
+    transform: translateY(0);
+}
+
+/* Focus effect pada form setelah copy */
+textarea:focus,
+input[type="text"]:focus,
+input[type="number"]:focus,
+select:focus {
+    outline: none;
+    border-color: #e91e63 !important;
+    box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1) !important;
+    transition: all 0.2s ease;
+}
+
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Responsive toast untuk mobile */
+@media (max-width: 768px) {
+    .custom-toast {
+        top: 10px !important;
+        right: 10px !important;
+        min-width: 200px !important;
+        font-size: 13px !important;
+        padding: 12px 20px !important;
+    }
+}

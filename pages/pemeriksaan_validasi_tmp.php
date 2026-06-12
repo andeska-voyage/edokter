@@ -1,0 +1,1 @@
+<?php // file ini bisa dihapus ?>
